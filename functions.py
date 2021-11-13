@@ -2,6 +2,7 @@ import cv2
 import numpy as np
 import face_recognition
 import os
+from datetime import datetime
 
 
 def load_images(path):
@@ -27,3 +28,15 @@ def save_encode_images(images):
 def load_encode_images(file):
     return np.load(file)
 
+
+def register_recognition(name):
+    with open('register.csv', 'r+') as f:
+        data_list = f.readlines()
+        name_list = []
+        for line in data_list:
+            entry = line.split(',')
+            name_list.append(entry[0])
+        if name not in name_list:
+            data_current = datetime.now()
+            data_current = data_current.strftime('%H:%M:%S')
+            f.writelines(f'\n{name},{data_current}')

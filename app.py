@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 import face_recognition
 
-from functions import load_images, load_encode_images, save_encode_images
+from functions import load_images, load_encode_images, save_encode_images, register_recognition
 
 images, class_name = load_images('images')
 # executar função para criar arquivo com encodes das imagens apenas na primeira vez que executar o app
@@ -32,6 +32,7 @@ while True:
             cv2.rectangle(img, (x1, y1), (x2, y2), (0, 255, 0), 2)
             cv2.rectangle(img, (x1, y2 - 30), (x2, y2), (0, 255, 0), cv2.FILLED)
             cv2.putText(img, name, (x1 + 6, y2 - 6), cv2.FONT_HERSHEY_COMPLEX_SMALL, 1, (255, 255, 255), 1)
+            register_recognition(name)
 
     cv2.imshow("Reconhecimento Facial", img)
 
