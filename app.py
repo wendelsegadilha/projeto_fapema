@@ -4,15 +4,15 @@ import face_recognition
 from tkinter import *
 from functions import load_images, load_encode_images, save_encode_images, register_recognition
 
-images, class_name = load_images('images')
-
 
 # executar função para criar arquivo com encodes das imagens apenas na primeira vez que executar o app
 def save_encode():
+    images, _ = load_images('images')
     save_encode_images(images)
 
 
 def start_recognition():
+    _, class_name = load_images('images')
     encode_list_known = load_encode_images('encodes_images.npy')
     cap = cv2.VideoCapture(0)
 
