@@ -40,3 +40,7 @@ def register_recognition(name):
             data_current = datetime.now()
             data_current = data_current.strftime('%H:%M:%S')
             f.writelines(f'\n{name},{data_current}')
+
+
+#images, class_name = load_images('images')
+#save_encode_images(images)
