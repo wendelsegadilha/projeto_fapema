@@ -17,7 +17,10 @@ def get_dados_aluno(url):
             with open('images/'+str(alunos[i]['id'])+'-'+alunos[i]['nome']+'.jpg', 'wb') as f:
                 f.write(imagem.content)
 
-
+def registrar_reconhecimento(id):
+    response = requests.get("http://localhost:8080/registros/registrar/"+str(id))
+    print("Reconhecimento registrado com sucesso!")
+    
 def load_images(path):
     images = []
     class_name = []

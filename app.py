@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 import face_recognition
 from tkinter import *
-from functions import get_dados_aluno, load_images, load_encode_images, save_encode_images, register_recognition
+from functions import get_dados_aluno, load_images, load_encode_images, registrar_reconhecimento, save_encode_images, register_recognition
 
 
 # executar função para criar arquivo com encodes das imagens apenas na primeira vez que executar o app
@@ -15,7 +15,7 @@ def start_recognition():
     _, class_name = load_images('images')
     encode_list_known = load_encode_images('encodes_images.npy')
     cap = cv2.VideoCapture(0)
-
+    id_rec = ""
     while True:
         success, img = cap.read()
         img_small = cv2.resize(img, (0, 0), None, 0.25, 0.25)
@@ -39,6 +39,9 @@ def start_recognition():
                 cv2.rectangle(img, (x1, y2 - 30), (x2, y2), (0, 255, 0), cv2.FILLED)
                 cv2.putText(img, name, (x1 + 6, y2 - 6), cv2.FONT_HERSHEY_COMPLEX_SMALL, 1, (255, 255, 255), 1)
                 register_recognition(name)
+                if id != id_rec:
+                    registrar_reconhecimento(id)
+                    id_rec = id 
 
         cv2.imshow("Reconhecimento Facial", img)
 
