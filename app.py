@@ -31,7 +31,8 @@ def start_recognition():
             matche_index = np.argmin(face_distance)
 
             if matches[matche_index]:
-                name = class_name[matche_index].upper()
+                id_name = class_name[matche_index].upper()
+                id, name = id_name.split('-')
                 y1, x2, y2, x1 = face_location
                 y1, x2, y2, x1 = y1 * 4, x2 * 4, y2 * 4, x1 * 4
                 cv2.rectangle(img, (x1, y1), (x2, y2), (0, 255, 0), 2)

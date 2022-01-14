@@ -14,7 +14,7 @@ def get_dados_aluno(url):
         print(alunos[i]['imagem'])
         if alunos[i]['imagem'] != None:
             imagem = requests.get(alunos[i]['imagem'])
-            with open('images/'+alunos[i]['nome']+'.jpg', 'wb') as f:
+            with open('images/'+str(alunos[i]['id'])+'-'+alunos[i]['nome']+'.jpg', 'wb') as f:
                 f.write(imagem.content)
 
 
