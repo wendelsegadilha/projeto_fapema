@@ -2,7 +2,20 @@ import cv2
 import numpy as np
 import face_recognition
 import os
+import requests
 from datetime import datetime
+
+def get_dados_aluno(url):
+    response = requests.get(url)
+    alunos = response.json()
+    print(type(alunos))
+
+    for i in range(len(alunos)):
+        print(alunos[i]['imagem'])
+        if alunos[i]['imagem'] != None:
+            imagem = requests.get(alunos[i]['imagem'])
+            with open('images/'+alunos[i]['nome']+'.jpg', 'wb') as f:
+                f.write(imagem.content)
 
 
 def load_images(path):

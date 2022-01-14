@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 import face_recognition
 from tkinter import *
-from functions import load_images, load_encode_images, save_encode_images, register_recognition
+from functions import get_dados_aluno, load_images, load_encode_images, save_encode_images, register_recognition
 
 
 # executar função para criar arquivo com encodes das imagens apenas na primeira vez que executar o app
@@ -48,6 +48,8 @@ def start_recognition():
     cap.release()
     cv2.destroyAllWindows()
 
+#Buscar dados dos alunos
+get_dados_aluno("http://localhost:8080/alunos")
 
 # Interface do app
 window = Tk()
